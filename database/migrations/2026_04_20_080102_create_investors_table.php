@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('investors', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('file');
+            $table->string('type');
+            $table->string('language');
             $table->timestamps();
         });
     }
