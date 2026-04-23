@@ -18,6 +18,8 @@ class CategoriesTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
+                TextColumn::make('parent_id')
+                    ->searchable(),
                 TextColumn::make('meta_description')
                     ->searchable(),
                 TextColumn::make('meta_keywords')
