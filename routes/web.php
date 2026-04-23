@@ -1,27 +1,27 @@
 <?php
 
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FacilityController;
-use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PartnerController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Frontend\BrandController;
+use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\FacilityController;
+use App\Http\Controllers\Frontend\InvestorController;
+use App\Http\Controllers\Frontend\NewsController;
+use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\PartnerController;
+use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
- // Home
-Route::get('/', function () {
-    return view('home');
-});
+// 
+Route::get('/',  [PageController::class, 'home'])->name('home');
+Route::get('/about',  [PageController::class, 'about'])->name('about');
+
 
 // Brands
 Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
-Route::get('/brands/{brand}', [BrandController::class, 'show'])->name('brands.show');
 
 // Categories
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
