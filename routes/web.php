@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FacilityController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\InvestorController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\PageController;
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // 
-Route::get('/',  [PageController::class, 'home'])->name('home');
+Route::get('/',  [HomeController::class, 'home'])->name('home');
 Route::get('/about',  [PageController::class, 'about'])->name('about');
 
+// Facilities 
+Route::get('/facilities/{slug}', [FacilityController::class, 'show'])->name('facilities.show');
 
 // Brands
 Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
@@ -31,9 +34,6 @@ Route::get('/categories/{category}', [CategoryController::class, 'show'])->name(
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-// Facilities
-Route::get('/facilities', [FacilityController::class, 'index'])->name('facilities.index');
-Route::get('/facilities/{facility}', [FacilityController::class, 'show'])->name('facilities.show');
 
 // News
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
@@ -47,4 +47,10 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/partners', [PartnerController::class, 'index'])->name('partners.index');
 
 // Investors
-Route::get('/investors', [InvestorController::class, 'index'])->name('investors.index');
+Route::prefix('investors')->name('investors.')->group(function () {
+    Route::get('/profile',      [InvestorController::class, 'profile'])->name('profile');
+    Route::get('/governance',   [InvestorController::class, 'governance'])->name('governance');
+    Route::get('/relations',    [InvestorController::class, 'relations'])->name('relations');
+    Route::get('/media',        [InvestorController::class, 'media'])->name('media');
+    Route::get('/information',  [InvestorController::class, 'information'])->name('information');
+});

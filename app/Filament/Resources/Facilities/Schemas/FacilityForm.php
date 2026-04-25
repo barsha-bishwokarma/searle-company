@@ -28,6 +28,8 @@ class FacilityForm
 
                         FileUpload::make('image')
                             ->image()
+                            ->directory('facilities') // This forces the file into storage/app/public/facilities
+                            ->disk('public')          // Explicitly set the public disk
                             ->required(),
                     ])
 

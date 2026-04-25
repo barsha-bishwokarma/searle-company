@@ -25,9 +25,9 @@ class ProductController extends Controller
     }
 
     // Show single product
-    public function show($categorySlug, $productSlug)
-    {
-        $product = Product::where('slug', $productSlug)->firstOrFail();
-        return view('products.show', compact('product'));
-    }
+   public function show($slug) 
+{
+    $product = Product::where('slug', $slug)->firstOrFail();
+    return view('frontend.products.show', compact('product'));
+}
 }
