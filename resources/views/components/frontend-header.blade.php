@@ -1,5 +1,5 @@
-<header class="sticky top-0 z-50">
-    <div class="py-6 bg-white border-b border-gray-200">
+<header class="sticky top-0 z-50 bg-white shadow">
+    <div class="py-6 border-b border-gray-200">
         <div class="max-w-6xl mx-auto mt-2 flex justify-between items-center">
             <a href="">
                 <img src="{{ asset('images/searle-logo-1.png') }}" alt="searle" class="h-8 w-auto object-contain">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="bg-white border-t border-gray-200 shadow-2xl">
+    <div class="border-t border-gray-200 shadow-2xl">
         <nav class="max-w-6xl mx-auto mt-2 ">
             <ul class="flex items-center gap-4">
 
@@ -46,29 +46,84 @@
                         href="{{ route('home') }}">Home</a>
                 </li>
 
-                <!-- repeat pattern -->
-                <li class="flex items-center">
-                    <span class="h-4 border-l border-gray-300"></span>
-                    <a class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)]"
-                        href="{{ route('about') }}">About us</a>
-                </li>
 
                 <li class="flex items-center relative group">
                     <span class="h-4 border-l border-gray-300"></span>
                     <button
                         class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)] flex items-center gap-1">
-                        Products
+                        About Us
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
+                    <div
+                        class="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 shadow-xl opacity-0 invisible translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <ul class="py-2 text-gray-700">
+                            <li>
+                                <a href="{{ route('about.ceo') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    CEO Message
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.ibl') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    IBL Group Companies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.history') }}"
+                                    class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    History
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.mission') }}"
+                                    class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    Mission, Vision & Values
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.facilities') }}"
+                                    class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    Manufacturing Facilities
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.csr') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    Corporate Social Responsibility
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.global') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    Global Business
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('about.policies') }}"
+                                    class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    Policies/Certifications
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="flex items-center relative group">
+                    <span class="h-4 border-l border-gray-300"></span>
+
+                    <a class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)] flex items-center gap-1"
+                        href="{{ route('products.index') }}">
+                        Products
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
 
                     <div
-                        class="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        class="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
                         <ul class="py-2 text-gray-700">
                             @foreach ($navCategories as $category)
                                 <li>
-                                    <a href="{{ route('products.show', $category->slug) }}"
+                                    <a href="{{ route('products.index', ['cat' => $category->slug]) }}"
                                         class="block px-4 py-2 text-sm hover:bg-gray-100">
                                         {{ $category->name }}
                                     </a>
@@ -90,7 +145,7 @@
                     </button>
 
                     <div
-                        class="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        class="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
                         <ul class="py-2 text-gray-700">
                             <li>
                                 <a href="{{ route('investors.profile') }}"
@@ -124,7 +179,6 @@
                             </li>
                         </ul>
                     </div>
-
                 </li>
 
 
