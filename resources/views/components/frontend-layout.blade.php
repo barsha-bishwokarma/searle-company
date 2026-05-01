@@ -10,39 +10,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --bg-color: white;
+            --primary-color: #486199;
+            --secondary-color: #1b3981;
+
+        }
+
+        /* scrool smooth */
+        html {
+            scroll-behavior: smooth;
+            background-color: white;
+        }
+
+        body {
+            overscroll-behavior: none;
+            background-color: var(--bg-color);
+        }
+
+        .brand-card:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
 </head>
-<style>
-    :root {
-        --bg-color: white;
-        --primary-color: #486199;
-        --secondary-color: #1b3981;
-
-    }
-
-    /* scrool smooth */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-    }
-
-    .container {
-        width: 85%;
-        margin: auto;
-    }
-
-    button {
-        cursor: pointer;
-    }
-</style>
 
 <body>
 
     <x-frontend-header />
-    
+
     <main>
         {{ $slot }}
     </main>
