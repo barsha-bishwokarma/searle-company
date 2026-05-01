@@ -15,13 +15,19 @@ class ProductsTable
     {
         return $table
             ->columns([
-                TextColumn::make('brand.name')
-                    ->searchable(),
                 TextColumn::make('category.name')
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('generic')
+                    ->searchable(),
+                TextColumn::make('form')
+                    ->searchable(),
+                TextColumn::make('strength')
+                    ->searchable(),
                 ImageColumn::make('image'),
+                TextColumn::make('pdf')
+                    ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
                 TextColumn::make('meta_keywords')
