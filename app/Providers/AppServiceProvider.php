@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $view->with('navCategories', Category::whereNull('parent_id')->get());
         });
-
           
     }
+    
 }
