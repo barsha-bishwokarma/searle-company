@@ -5,29 +5,39 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-     public function index()
+    public function index()
     {
-        $categories = Category::whereNull('parent_id')->get();
-        return view('products.index', compact('categories'));
+        // Get all main categories with subcategories
+        $categories = Category::whereNull('parent_id')
+            ->with('children')
+            ->get();
+
+        // Get products filtered by category slug
+        $selectedCat = request('cat');
+
+        if ($selectedCat) {
+            $category = Category::where('slug', $selectedCat)->first();
+            if ($category) {
+                // Get products from this category AND its subcategories
+                $categoryIds = $category->children->pluck('id')->push($category->id);
+                $products = Product::whereIn('category_id', $categoryIds)->get();
+            } else {
+                $products = collect();
+            }
+        } else {
+            $products = Product::all();
+        }
+
+        return view('Frontend.products.index', compact('categories', 'products', 'selectedCat'));
     }
 
-    // Show subcategories + products of a category
-    public function category($slug)
+    public function show($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        $subcategories = $category->children;
-        $products = $category->products;
-        return view('products.category', compact('category', 'subcategories', 'products'));
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $categories = Category::whereNull('parent_id')->with('children')->get();
+        return view('Frontend.products.show', compact('product', 'categories'));
     }
-
-    // Show single product
-   public function show($slug) 
-{
-    $product = Product::where('slug', $slug)->firstOrFail();
-    return view('frontend.products.show', compact('product'));
-}
 }

@@ -1,16 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Models;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
- 
+use Illuminate\Database\Eloquent\Model;
 
-class CategoryController extends Controller
+class Category extends Model
 {
-    public function show($slug)
+    protected $fillable = ['name', 'slug', 'parent_id'];
+
+    public function children()
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        return view('frontend.categories.show', compact('category'));
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
