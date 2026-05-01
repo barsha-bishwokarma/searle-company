@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers\Frontend;
 
+
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class CategoryController extends Model
 {
     protected $fillable = ['name', 'slug', 'parent_id'];
 
