@@ -16,8 +16,6 @@ class PartnersTable
             ->columns([
                 TextColumn::make('partner_name')
                     ->searchable(),
-                TextColumn::make('type')
-                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

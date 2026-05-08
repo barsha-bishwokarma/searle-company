@@ -13,8 +13,6 @@ class PartnerForm
             ->components([
                 TextInput::make('partner_name')
                     ->required(),
-                TextInput::make('type')
-                    ->required(),
             ]);
     }
 }
