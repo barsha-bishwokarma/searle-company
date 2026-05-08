@@ -3,10 +3,13 @@
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FacilityController;
+use App\Http\Controllers\Frontend\GovernanceController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\InvestorController;
+use App\Http\Controllers\Frontend\MediaController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\PartnerController;
 use App\Http\Controllers\Frontend\ProductController;
@@ -32,10 +35,8 @@ Route::prefix('about')->name('about.')->group(function () {
 
 
 // Facilities 
-Route::get('/facilities/{slug}', [FacilityController::class, 'show'])->name('facilities.show');
+Route::get('/facilities/{id}', [FacilityController::class, 'show'])->name('facilities.show');
 
-// Brands
-Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
 
 // Products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -47,7 +48,7 @@ Route::get('/categories/{category}', [CategoryController::class, 'show'])->name(
 
 // News
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -58,9 +59,9 @@ Route::get('/partners', [PartnerController::class, 'index'])->name('partners.ind
 
 // Investors
 Route::prefix('investors')->name('investors.')->group(function () {
-    Route::get('/profile',      [InvestorController::class, 'profile'])->name('profile');
-    Route::get('/governance',   [InvestorController::class, 'governance'])->name('governance');
+    Route::get('/company-profile',      [CompanyProfileController::class, 'company_profile'])->name('profile');
+    Route::get('/governance',   [GovernanceController::class, 'governance'])->name('governance');
     Route::get('/relations',    [InvestorController::class, 'relations'])->name('relations');
-    Route::get('/media',        [InvestorController::class, 'media'])->name('media');
+    Route::get('/media',        [MediaController::class, 'media'])->name('media');
     Route::get('/information',  [InvestorController::class, 'information'])->name('information');
 });
