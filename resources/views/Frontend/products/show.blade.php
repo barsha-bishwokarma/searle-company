@@ -1,5 +1,5 @@
-<x-frontend-layout>
-    <div class="max-w-7xl mx-auto bg-white px-6 py-10">
+<x-frontend.layout>
+    <div class="max-w-6xl mx-auto bg-white px-6 py-10">
         <div class="flex gap-10">
 
             <div class="w-80 flex-shrink-0">
@@ -141,4 +141,4 @@
         </div>
     </div>
 
-</x-frontend-layout>
+</x-frontend.layout>

@@ -13,7 +13,7 @@
 
     <style>
         :root {
-            --bg-color: white;
+            --background-color: white;
             --primary-color: #486199;
             --secondary-color: #1b3981;
 
@@ -22,22 +22,17 @@
         /* scrool smooth */
         html {
             scroll-behavior: smooth;
-            background-color: white;
         }
 
         body {
             overscroll-behavior: none;
-            background-color: var(--bg-color);
+            background-color: var(--background-color);
         }
 
         .brand-card:hover {
             border-color: var(--secondary-color);
         }
 
-        .container {
-            width: 85%;
-            margin: auto;
-        }
 
         button {
             cursor: pointer;
@@ -47,7 +42,7 @@
 
 <body>
 
-    <x-frontend-header />
+     <x-frontend.header />
 
     <main>
         {{ $slot }}
@@ -55,7 +50,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-
+    <x-frontend.footer />
 </body>
 
 </html>

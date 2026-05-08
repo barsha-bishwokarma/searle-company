@@ -1,8 +1,8 @@
 <header class="sticky top-0 z-50 bg-white shadow">
     <div class="py-6 border-b border-gray-200">
-        <div class="max-w-6xl mx-auto mt-2 flex justify-between items-center">
-            <a href="">
-                <img src="{{ asset('images/searle-logo-1.png') }}" alt="searle" class="h-8 w-auto object-contain">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/searle-logo-1.png') }}" alt="searle_logo" class="h-8 w-auto object-contain">
             </a>
 
             <div class="flex items-center gap-8">
@@ -185,13 +185,13 @@
                 <li class="flex items-center">
                     <span class="h-4 border-l border-gray-300"></span>
                     <a class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)]"
-                        href="">Partners</a>
+                        href="{{ route('partners.index') }}">Partners</a>
                 </li>
 
                 <li class="flex items-center">
                     <span class="h-4 border-l border-gray-300"></span>
                     <a class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)]"
-                        href="">News</a>
+                        href="{{ route('news.index') }}">News</a>
                 </li>
 
                 <li class="flex items-center">
@@ -203,7 +203,7 @@
                 <li class="flex items-center">
                     <span class="h-4 border-l border-gray-300"></span>
                     <a class="px-4 py-3 text-sm text-gray-500 font-bold uppercase hover:text-[var(--secondary-color)]"
-                        href="">Contact</a>
+                        href="{{route('contact.index')}}">Contact</a>
                 </li>
 
                 <li class="flex items-center">

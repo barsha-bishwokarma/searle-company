@@ -1,4 +1,4 @@
-<x-frontend-layout>
+<x-frontend.layout>
     <div class="max-w-6xl mx-auto px-6 py-10">
 
         {{-- Breadcrumb --}}
@@ -21,4 +21,4 @@
         </div>
 
     </div>
-</x-frontend-layout>
+</x-frontend.layout>

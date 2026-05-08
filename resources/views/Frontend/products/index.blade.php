@@ -1,8 +1,7 @@
-<x-frontend-layout>
-    <div class="max-w-7xl mx-auto bg-white px-6 py-10">
+<x-frontend.layout>
+    <div class="max-w-6xl mx-auto bg-white px-6 py-10">
         <div class="flex gap-10">
 
-            {{-- LEFT SIDEBAR --}}
             <div class="w-80 flex-shrink-0">
 
                 <h2 class="text-3xl font-light text-gray-700 mb-6">Categories</h2>
@@ -85,4 +84,4 @@
 
         </div>
     </div>
-</x-frontend-layout>
+</x-frontend.layout>

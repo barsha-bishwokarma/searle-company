@@ -1,4 +1,4 @@
-<x-frontend-layout>
+<x-frontend.layout>
     <section class="bg-white">
         <div class="min-h-screen flex items-center justify-center bg-[var(--primary-color)]">
             <div class="max-w-5xl mx-auto text-center  ">
@@ -65,43 +65,123 @@
 
     <section>
         <div class="bg-gray-100">
-            <div class="max-w-6xl mx-auto py-20">
-                <h2 class="text-center uppercase tracking-wider text-3xl text-[var(--secondary-color)] font-bold">searle
-                    manufacturing
+            <div class="max-w-6xl mx-auto py-20 px-4">
+
+                <h2 class="text-center uppercase tracking-wider text-3xl text-[var(--secondary-color)] font-bold">
+                    searle manufacturing
                     <span class="bg-[var(--secondary-color)] py-1 px-3 rounded text-white font-bold">facilities</span>
                 </h2>
 
                 <div class="flex items-center justify-center gap-4 mt-4">
                     <div class="flex-grow border-t-3 border-gray-300 max-w-[200px]"></div>
-
                     <span class="text-gray-400 text-xl">🍃</span>
-
                     <div class="flex-grow border-t-3 border-gray-300 max-w-[200px]"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-5">
-                    @foreach ($facilities as $facility)
-                        <div class=" overflow-hidden shadow transition-transform">
-                            <img src="{{ asset('storage/' . $facility->image) }}" alt="{{ $facility->plant_name }}"
-                                class="w-full h-72 object-cover">
+                {{-- Slider --}}
+                <div class="overflow-hidden mt-8" id="facilitySlider">
+                    <div class="flex gap-12 transition-transform duration-500 ease-in-out" id="sliderTrack">
 
-                            <div class="p-4 bg-white">
-                                <h3 class="text-xl font-bold text-blue-900">{{ $facility->plant_name }}</h3>
-                                <p class="text-gray-500 mt-1 flex items-center">
-                                    {{ $facility->location }}
-                                </p>
+                        @foreach ($facilities as $facility)
+                            <div class="w-[calc(50%-18px)] flex-shrink-0 overflow-hidden shadow bg-white group">
+                                <img src="{{ asset('storage/' . $facility->image) }}" alt="{{ $facility->plant_name }}"
+                                    class="w-full h-56 object-cover transition-all duration-300 group-hover:scale-105">
 
-                                <a href="{{ route('facilities.show', $facility->id) }}">view more</a>
+                                <div
+                                    class="p-4 bg-white group-hover:bg-[var(--secondary-color)] text-center transition-all duration-300">
+                                    <h3
+                                        class="text-base font-bold text-black group-hover:text-white uppercase tracking-wide transition-all duration-300">
+                                        {{ $facility->plant_name }}
+                                    </h3>
+                                    <p
+                                        class="text-gray-500 group-hover:text-white text-sm mt-1 transition-all duration-300">
+                                        {{ $facility->location }}
+                                        <a href="{{ route('facilities.show', $facility->id) }}"
+                                            class="text-gray-600 ml-1 transition-all duration-300">View More</a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+
+                    </div>
                 </div>
+
+                {{-- Navigation --}}
+                <div class="flex justify-center items-center gap-4 mt-6">
+
+                    <button id="prevBtn"
+                        class="w-10 h-10 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-[var(--secondary-color)] hover:border-[var(--secondary-color)] group transition">
+                        <svg class="w-4 h-4 stroke-gray-700 group-hover:stroke-white transition" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+
+                    <div class="flex gap-2 items-center" id="dotsContainer"></div>
+
+                    <button id="nextBtn"
+                        class="w-10 h-10 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-[var(--secondary-color)] hover:border-[var(--secondary-color)] group transition">
+                        <svg class="w-4 h-4 stroke-gray-700 group-hover:stroke-white transition" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+
+                </div>
+
             </div>
         </div>
     </section>
 
+    <script>
+        const track = document.getElementById('sliderTrack');
+        const dotsContainer = document.getElementById('dotsContainer');
+        const cards = Array.from(track.querySelectorAll('.flex-shrink-0'));
+        const total = cards.length;
+        const perView = 2;
+        let current = 0;
+
+        function getMaxIndex() {
+            return Math.max(0, total - perView);
+        }
+
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i <= getMaxIndex(); i++) {
+                const dot = document.createElement('div');
+                dot.className =
+                    `w-2 h-2 rounded-full cursor-pointer transition-all duration-200 ${i === 0 ? 'bg-[#1a3a6b] scale-125' : 'bg-gray-300'}`;
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            dotsContainer.querySelectorAll('div').forEach((d, i) => {
+                if (i === current) {
+                    d.className =
+                        'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-[#1a3a6b] scale-125';
+                } else {
+                    d.className = 'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-gray-300';
+                }
+            });
+        }
+
+        function goTo(index) {
+            current = Math.max(0, Math.min(index, getMaxIndex()));
+            const cardWidth = cards[0].offsetWidth + 24;
+            track.style.transform = `translateX(-${current * cardWidth}px)`;
+            updateDots();
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+        buildDots();
+    </script>
+
     <section class="py-15">
-        <div class="max-w-6xl mx-auto py-15">
+        <div class="max-w-6xl mx-auto py-20">
             <h3 class="text-center uppercase tracking-wider text-3xl text-[var(--secondary-color)] font-bold">
                 Our leading
                 <span class="bg-[var(--secondary-color)] py-1 px-3 rounded text-white font-bold">Brands</span>
@@ -140,7 +220,6 @@
         </div>
     </section>
 
-    
     <section>
         <div class="relative py-24"
             style="background-color: #1b3981; clip-path: polygon(0 6%, 100% 0%, 100% 94%, 0% 100%);">
@@ -148,13 +227,21 @@
 
                 {{-- Title --}}
                 <div class="text-center mb-10">
-                    <p class="text-xs text-white/60 uppercase tracking-widest mb-1">OUR</p>
-                    <h2 class="text-3xl font-light text-white tracking-widest">PORTFOLIO</h2>
+                    <h2 class="text-2xl text-white font-bold text-[var(--secondary-color)] tracking-widest">OUR <span
+                            class="bg-white text-[var(--secondary-color)] font-bold rounded px-4 py-2">PORTFOLIO</span>
+                    </h2>
+
+                    <div class="flex items-center justify-center gap-4 mt-4">
+                        <div class="flex-grow border-t-2 border-gray-400 max-w-[130px]"></div>
+
+                        <span class="text-gray-300 text-5xl font-medium -translate-y-1">+</span>
+
+                        <div class="flex-grow border-t-2 border-gray-400 max-w-[130px]"></div>
+                    </div>
                 </div>
 
                 {{-- Grid --}}
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
-
                     @php
                         $portfolio = [
                             ['title' => 'Pharmaceutical', 'image' => 'pharmaceutical.png', 'cat' => 'pharmaceutical'],
@@ -163,12 +250,16 @@
                                 'image' => 'biopharmaceutical.png',
                                 'cat' => 'biopharmaceutical',
                             ],
-                            ['title' => 'Nutraceutical', 'image' => 'nutraceutical.png', 'cat' => 'nutraceutical'],
+                            [
+                                'title' => 'Nutraceutical',
+                                'image' => 'otc-health-suppliments.png',
+                                'cat' => 'nutraceutical',
+                            ],
                             ['title' => 'Nutrition', 'image' => 'nutrition.png', 'cat' => 'nutrition'],
-                            ['title' => 'Consumer', 'image' => 'consumer.png', 'cat' => 'consumer'],
+                            ['title' => 'Consumer', 'image' => 'Cunsumer-02.png', 'cat' => 'consumer'],
                             [
                                 'title' => 'Medical Devices & Disposables',
-                                'image' => 'medical-devices.png',
+                                'image' => 'medical-devices-disposals.png',
                                 'cat' => 'medical-devices-disposables',
                             ],
                         ];
@@ -176,24 +267,22 @@
 
                     @foreach ($portfolio as $item)
                         <a href="{{ route('products.index', ['cat' => $item['cat']]) }}"
-                            class="group relative overflow-hidden rounded-2xl h-44">
+                            class="flex flex-col items-center justify-center py-10 px-4 text-center transition-all duration-300 rounded-xl">
 
-                            {{-- Image --}}
+                            {{-- Small Icon Image --}}
                             <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                class="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110">
 
-                            {{-- Overlay --}}
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#1b3981]/90 via-[#1b3981]/20 to-transparent group-hover:from-[#1b3981]/95 transition-all duration-300">
-                            </div>
+                            {{-- Title --}}
+                            <h3 class="text-white font-bold text-lg mt-4">
+                                {{ $item['title'] }}
+                            </h3>
 
-                            {{-- Content --}}
-                            <div class="absolute bottom-0 left-0 right-0 p-4">
-                                <p class="text-white font-medium text-sm mb-1">{{ $item['title'] }}</p>
-                                <p
-                                    class="text-white/70 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    View products →</p>
-                            </div>
+                            {{-- View Products --}}
+                            <p
+                                class="text-white/60 text-sm mt-1 group-hover:text-white transition-colors duration-300">
+                                View Products
+                            </p>
 
                         </a>
                     @endforeach
@@ -202,4 +291,72 @@
             </div>
         </div>
     </section>
-</x-frontend-layout>
+
+    <section>
+        <div class="bg-white">
+            <div class="max-w-6xl mx-auto py-20 px-4">
+
+                {{-- Title --}}
+                <h2 class="text-center uppercase tracking-wider text-3xl text-[var(--secondary-color)] font-bold">
+                    searle
+                    <span class="bg-[var(--secondary-color)] py-1 px-3 rounded text-white font-bold">updates</span>
+                </h2>
+
+                {{-- Divider --}}
+                <div class="flex items-center justify-center gap-4 mt-4 mb-10">
+                    <div class="flex-grow border-t border-gray-300 max-w-[200px]"></div>
+                    <span class="text-gray-400 text-2xl">✚</span>
+                    <div class="flex-grow border-t border-gray-300 max-w-[200px]"></div>
+                </div>
+
+                {{-- News Grid --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    @foreach ($news as $item)
+                        <div
+                            class="flex bg-white border border-gray-200 group transition-all duration-300 rounded-lg overflow-hidden">
+
+                            {{-- Left: Image --}}
+                            <div class="w-48 flex-shrink-0 overflow-hidden">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                    class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105">
+                            </div>
+
+                            {{-- Right: Content --}}
+                            <div class="flex flex-col justify-between p-4 flex-1">
+
+                                {{-- Title --}}
+                                <h3
+                                    class="text-base font-bold text-gray-800 leading-snug mb-2 transition-colors duration-300">
+                                    {{ $item->title }}
+                                </h3>
+
+                                {{-- Excerpt --}}
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    {{ Str::limit($item->meta_description, 120) }}
+                                </p>
+
+                                {{-- Read More --}}
+                                <div class="mt-4 ">
+                                    <a href="{{ route('news.show', $item->id) }}"
+                                        class="inline-block px-6 py-2 bg-[var(--secondary-color)] hover:text-[var(--secondary-color)] hover:bg-white border border-[var(--secondary-color)] text-white text-sm rounded font-semibold hover:bg-opacity-90 transition-all duration-300">
+                                        Read more
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- View All --}}
+                <div class="text-center mt-14">
+                    <a href="{{ route('news.index') }}"
+                        class="inline-block px-4 py-2 bg-[var(--secondary-color)] hover:text-[var(--secondary-color)]  border border-[var(--secondary-color)] hover:bg-whiteF text-white rounded uppercase tracking-wider text-sm font-semibold border border-[var(--secondary-color)] hover:bg-white transition-all duration-300">
+                        View All News
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</x-frontend.layout>

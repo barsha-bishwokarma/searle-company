@@ -1,5 +1,5 @@
-<x-frontend-layout>
-    <div class="max-w-5xl mx-auto px-6 py-16">
+<x-frontend.layout>
+    <div class="max-w-5xl mx-auto py-16">
 
         @php
             $history = [
@@ -118,4 +118,4 @@
         </div>
 
     </div>
-</x-frontend-layout>
+</x-frontend.layout>
