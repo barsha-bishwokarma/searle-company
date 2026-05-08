@@ -4,21 +4,22 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
-use Illuminate\Http\Request;
+
 
 class NewsController extends Controller
 {
     public function index()
     {
         $news = News::whereNotNull('published_at')
-            ->where('published_at', '<=', now())
+            ->where('published_at', '<=', now()->endOfDay())
             ->latest('published_at')
             ->get();
-        return view('news.index', compact('news'));
+        return view('frontend.news.index', compact('news'));
     }
 
-    public function show(News $news)
+    public function show($slug)
     {
-        return view('news.show', compact('news'));
+        $news = News::where('slug', $slug)->firstOrFail();
+        return view('frontend.news.show', compact('news'));
     }
 }
