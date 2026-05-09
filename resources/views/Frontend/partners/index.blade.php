@@ -13,13 +13,13 @@
         <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
             <div class="flex flex-col md:flex-row gap-16 items-start">
-                <!-- Left Side: Static Globe Image -->
+        
                 <div class="w-full md:w-1/2">
                     <img src="{{ asset('images/partner.jpg') }}" alt="Global Presence"
                         class="max-w-[95%] h-auto border border-gray-100">
                 </div>
 
-                <!-- Right Side: Vertical List with Blue Indicators -->
+            
                 <div class="w-full md:w-1/2">
                     <div class="space-y-1">
                         @foreach ($partners as $partner)
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <!-- Section 2: Logo Cloud (As seen in Screenshot 2026-05-05 133915.jpg) -->
+        
         <div class="max-w-6xl mx-auto py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-100 mt-10">
             <div class="">
                 <img src="{{ asset('images/partnerspng.png') }}" alt="logo" class="w-full h-auto">

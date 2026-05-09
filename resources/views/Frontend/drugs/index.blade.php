@@ -1,7 +1,7 @@
 <x-frontend.layout>
 
     <div class="bg-gray-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="max-w-6xl mx-auto px-4 py-4">
             <ul class="flex items-center gap-2 text-sm">
                 <li><a class="text-gray-400 hover:underline" href="{{ route('home') }}">Home</a></li>
                 <li class="text-gray-400">/</li>
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-10">
+    <div class="max-w-6xl mx-auto px-4 py-10">
         <div class="grid lg:grid-cols-12 gap-10">
 
             <div class="lg:col-span-5">
@@ -21,7 +21,7 @@
             </div>
 
 
-            <div class="lg:col-span-7 space-y-10">
+            <div class="lg:col-span-7 space-y-10 text-justify">
 
                 <div>
                     <h1 class="text-4xl font-bold text-gray-900">Drug Safety</h1>

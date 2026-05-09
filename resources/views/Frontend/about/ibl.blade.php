@@ -1,6 +1,6 @@
 <x-frontend.layout>
     <div class="bg-gray-50 border-b border-gray-100 mt-1">
-        <div class="max-w-6xl mx-auto py-4">
+        <div class="max-w-6xl mx-auto px-4 py-4">
             <ul class="flex items-center gap-2 text-sm">
                 <li><a class="text-gray-400 hover:underline decoration-gray-400" href="{{ route('home') }}">Home</a></li>
                 <li class="text-gray-400">/</li>

@@ -42,7 +42,7 @@
 
 <body>
 
-     <x-frontend.header />
+    <x-frontend.header />
 
     <main>
         {{ $slot }}
@@ -51,7 +51,23 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <x-frontend.footer />
-    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        </script>
+    @endif
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <x-frontend.layout>
     <div class="bg-gray-50 border-b border-gray-100 mt-1">
-        <div class="max-w-6xl mx-auto py-4">
+        <div class="max-w-6xl mx-auto px-4 py-4">
             <ul class="flex items-center gap-2 text-sm">
                 <li><a class="text-gray-400 hover:underline decoration-gray-400" href="{{ route('home') }}">Home</a></li>
                 <li class="text-gray-400">/</li>
@@ -16,9 +16,9 @@
 
         <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
             <p class="text-white text-sm tracking-[3px] uppercase font-medium mb-4">Join Our Team</p>
-            <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight mb-6">CRAFT YOUR CAREER
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight mb-6">CRAFT YOUR CAREER
             </h1>
-            <p class="text-white/90 text-xl md:text-2xl font-light mb-8">We are more than just a workplace</p>
+            <p class="text-white/90 text-lg sm:text-xl md:text-2xl font-light mb-8">We are more than just a workplace</p>
             <div class="max-w-2xl mx-auto text-gray-200 text-base md:text-lg leading-relaxed mb-10">
                 We create an environment that is satisfying and challenging yet we take care of your well-being.
                 A workplace where employees look forward to coming every day.
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-16 text-justify">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 text-justify">
 
         <div class="flex flex-col lg:flex-row gap-12">
 
@@ -54,7 +54,6 @@
             
             <div class="flex-1 space-y-20">
 
-                
                 <div>
                     <p class="text-gray-600 leading-relaxed text-[17px] max-w-3xl">
                         We take pride to be one of the most diversified healthcare companies in Pakistan
@@ -180,7 +179,7 @@
                 </div>
 
 
-                <div id="opportunities" class="bg-gray-50 -mx-6 px-6 py-16 rounded-3xl">
+                <div id="opportunities" class="bg-gray-50 -mx-4 sm:-mx-6 px-4 sm:px-6 py-16 rounded-3xl">
                     <div class="flex items-center gap-4 mb-10">
                         <div class="flex-1 h-px bg-gray-200"></div>
                         <h2 class="text-lg font-semibold text-gray-800 uppercase tracking-wider">Career Opportunities
@@ -188,7 +187,7 @@
                         <div class="flex-1 h-px bg-gray-200"></div>
                     </div>
 
-                    <div class="flex flex-wrap justify-center gap-8 mb-8 text-[var(--secondary-color)] font-medium">
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-8 mb-8 text-[var(--secondary-color)] font-medium">
                         <span>Collaborative</span>
                         <span>Innovative</span>
                         <span>Inclusive</span>
@@ -209,7 +208,7 @@
 
     
                     <h3 class="text-center text-xl font-bold text-gray-800 mt-16 mb-6">How We Hire</h3>
-                    <div class="flex flex-wrap justify-center gap-8 mb-8 text-[var(--secondary-color)] font-medium">
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-8 mb-8 text-[var(--secondary-color)] font-medium">
                         <span>Sales</span>
                         <span>Technical</span>
                         <span>Corporate</span>

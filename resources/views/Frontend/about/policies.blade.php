@@ -1,6 +1,7 @@
 <x-frontend.layout>
+    {{-- Breadcrumb --}}
     <div class="bg-gray-50 border-b border-gray-100 mt-1">
-        <div class="max-w-6xl mx-auto py-4">
+        <div class="max-w-6xl mx-auto py-4 px-4">
             <ul class="flex items-center gap-2 text-sm">
                 <li><a class="text-gray-400 hover:underline decoration-gray-400" href="{{ route('home') }}">Home</a></li>
                 <li class="text-gray-400">/</li>
@@ -8,32 +9,31 @@
             </ul>
         </div>
     </div>
-    <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-10">
 
         {{-- Top Two Banners --}}
-        <div class="grid grid-cols-2 gap-4 mb-8">
-            {{-- English Banner --}}
-            <div class="bg-[#4a3f8f] text-white flex items-end p-8 min-h-[160px]">
-                <h1 class="text-3xl font-bold tracking-wide uppercase">Quality Policy</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div class="bg-[#4a3f8f] text-white flex items-end p-6 md:p-8 min-h-[120px] md:min-h-[160px]">
+                <h1 class="text-2xl md:text-3xl font-bold tracking-wide uppercase">Quality Policy</h1>
             </div>
-            {{-- Urdu Banner --}}
-            <div class="bg-[#4a3f8f] text-white flex items-end justify-end p-8 min-h-[160px]">
-                <h1 class="text-3xl font-bold" style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl;">
+            <div
+                class="bg-[#4a3f8f] text-white flex items-end justify-start sm:justify-end p-6 md:p-8 min-h-[120px] md:min-h-[160px]">
+                <h1 class="text-2xl md:text-3xl font-bold"
+                    style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl;">
                     کوالٹی پالیسی
                 </h1>
             </div>
         </div>
 
         {{-- Description Row --}}
-        <div class="grid grid-cols-2 gap-4 mb-6">
-            {{-- English Description --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div class="text-gray-600 text-sm leading-7 text-justify">
                 The Searle Company Limited is committed to manufacture and market pharmaceutical
                 and consumer products of highest quality standard. We are committed to assure end
                 product quality, purity, efficacy and safety for its end users at affordable price, both locally
                 and internationally.
             </div>
-            {{-- Urdu Description --}}
             <div class="text-gray-600 text-sm leading-8 text-right"
                 style="direction: rtl; font-family: 'Noto Nastaliq Urdu', serif;">
                 سرل کمپنی اعلی معیار کی ادویات اور کنزیومر مصنوعات کی مینوفیکچرنگ اور مارکیٹنگ کے لیے پر عزم ہے۔
@@ -43,8 +43,8 @@
         </div>
 
         {{-- Commitment Boxes --}}
-        <div class="grid grid-cols-2 gap-4">
-            {{-- English Commitment --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {{-- English --}}
             <div class="border border-gray-200 p-6">
                 <h2 class="text-lg text-gray-700 mb-4">To achieve our commitment, we</h2>
                 <ul class="space-y-3">
@@ -73,18 +73,14 @@
                         and as per the company's Quality Policy.
                     </li>
                 </ul>
-
-                {{-- Signature --}}
                 <div class="mt-8 pt-4">
                     <div class="text-2xl font-signature text-gray-700 mb-1"
-                        style="font-family: 'Dancing Script', cursive;">
-                        &#x2767;
-                    </div>
+                        style="font-family: 'Dancing Script', cursive;">&#x2767;</div>
                     <p class="text-xs text-gray-500">Chief Executive Officer</p>
                 </div>
             </div>
 
-            {{-- Urdu Commitment --}}
+            {{-- Urdu --}}
             <div class="border border-gray-200 p-6" style="direction: rtl; font-family: 'Noto Nastaliq Urdu', serif;">
                 <h2 class="text-lg text-gray-700 mb-4">اس عہد کی تکمیل کے لئے</h2>
                 <ul class="space-y-3">
@@ -111,8 +107,6 @@
                         ہم اپنے ملازمین کو پیشہ ورانہ عبادت اور ذمہ داری سے انجام دینے کے لیے تربیت فراہم کرتے ہیں۔
                     </li>
                 </ul>
-
-                {{-- Signature --}}
                 <div class="mt-8 pt-4 text-right">
                     <div class="text-2xl text-gray-700 mb-1">&#x2767;</div>
                     <p class="text-xs text-gray-500">چیف ایگزیکٹو آفیسر</p>
@@ -121,35 +115,30 @@
         </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-10 space-y-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-10 space-y-10 md:space-y-16">
 
         {{-- ===================== SECTION 1: QUALITY POLICY ===================== --}}
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
             {{-- English Card --}}
             <div class="border border-gray-200 shadow-sm">
-                {{-- Logo + Doc Info --}}
                 <div class="px-6 pt-5 pb-3">
                     <p class="text-[#0057a8] text-2xl font-bold tracking-widest">SEARLE</p>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: IMS/IV/0025</span>
-                    <span class="px-4 py-2 flex-1">Revision No: 02</span>
-                    <span class="px-4 py-2 flex-1">Issue Date: 01-11-2019</span>
+                <div
+                    class="flex flex-wrap text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200">
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: IMS/IV/0025</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Revision No: 02</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Issue Date: 01-11-2019</span>
                 </div>
-
-                {{-- Purple Banner --}}
                 <div class="bg-[#4a3f8f] text-white px-6 py-8 mt-4">
-                    <h2 class="text-2xl font-bold uppercase tracking-wide">Quality Policy</h2>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase tracking-wide">Quality Policy</h2>
                 </div>
-
-                {{-- Description --}}
                 <div class="px-6 py-5 text-sm text-gray-600 leading-7 text-justify">
                     Nextar Pharma Private Limited is committed to manufacture and market Biopharmaceutical
                     Products of highest quality standard. We are committed to assure product quality, purity,
                     efficacy and safety for its end users at affordable price, both locally and internationally.
                 </div>
-
-                {{-- Commitment Box --}}
                 <div class="mx-6 border border-gray-300 p-4 text-sm text-gray-600">
                     <p class="mb-3 text-gray-700">To achieve our commitment, we</p>
                     <ul class="space-y-3">
@@ -175,30 +164,25 @@
                         <li class="flex items-start gap-2 leading-6">
                             <span class="text-[#4a3f8f] mt-0.5">&#9658;</span>
                             Educate, train and motivate employees and other interested parties to conduct activities
-                            in
-                            a responsible manner and as per the company's Quality Policy.
+                            in a responsible manner and as per the company's Quality Policy.
                         </li>
                     </ul>
                 </div>
-
-                {{-- Signature --}}
                 <div class="px-6 py-5">
                     <p class="text-2xl text-gray-600" style="font-family: 'Dancing Script', cursive;">✍</p>
                     <p class="text-xs text-gray-500 mt-1">Chief Executive Officer</p>
                     <p class="text-xs text-gray-400">Nextar Pharma Private Limited</p>
                 </div>
-
-                {{-- Footer --}}
                 <div class="flex justify-between items-center px-6 pb-4">
                     <div class="text-right">
                         <p class="text-[#1a6fb5] text-lg font-bold tracking-wide">NEXTAR</p>
                         <p class="text-[#1a6fb5] text-xs tracking-widest">PHARMA</p>
                     </div>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: MSM-F004-01</span>
-                    <span class="px-4 py-2 flex-1">Version No: 01</span>
-                    <span class="px-4 py-2 flex-1">Effective Date: 01-01-2020</span>
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200">
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: MSM-F004-01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Version No: 01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Effective Date: 01-01-2020</span>
                 </div>
             </div>
 
@@ -208,14 +192,14 @@
                 <div class="px-6 pt-5 pb-3">
                     <p class="text-[#0057a8] text-2xl font-bold tracking-widest" style="direction:ltr;">SEARLE</p>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200"
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200"
                     style="direction:ltr;">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: IMS/IV/0025</span>
-                    <span class="px-4 py-2 flex-1">Revision No: 02</span>
-                    <span class="px-4 py-2 flex-1">Issue Date: 01-11-2019</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: IMS/IV/0025</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Revision No: 02</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Issue Date: 01-11-2019</span>
                 </div>
                 <div class="bg-[#4a3f8f] text-white px-6 py-8 mt-4 text-right">
-                    <h2 class="text-2xl font-bold">کوالٹی پالیسی</h2>
+                    <h2 class="text-xl md:text-2xl font-bold">کوالٹی پالیسی</h2>
                 </div>
                 <div class="px-6 py-5 text-sm text-gray-600 leading-8 text-right">
                     سرل کمپنی اعلی معیار کی ادویات اور کنزیومر مصنوعات کی مینوفیکچرنگ اور مارکیٹنگ کے لیے پر عزم ہے۔
@@ -245,8 +229,7 @@
                         </li>
                         <li class="flex items-start gap-2 leading-8 flex-row-reverse">
                             <span class="text-[#4a3f8f] mt-1">&#9658;</span>
-                            ہم اپنے ملازمین کو پیشہ ورانہ عبادت اور ذمہ داری سے انجام دینے کے لیے تربیت فراہم کرتے
-                            ہیں۔
+                            ہم اپنے ملازمین کو پیشہ ورانہ عبادت اور ذمہ داری سے انجام دینے کے لیے تربیت فراہم کرتے ہیں۔
                         </li>
                     </ul>
                 </div>
@@ -261,30 +244,32 @@
                         <p class="text-[#1a6fb5] text-xs tracking-widest">PHARMA</p>
                     </div>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200"
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200"
                     style="direction:ltr;">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: MSM-F004-01</span>
-                    <span class="px-4 py-2 flex-1">Version No: 01</span>
-                    <span class="px-4 py-2 flex-1">Effective Date: 01-01-2020</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: MSM-F004-01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Version No: 01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Effective Date: 01-01-2020</span>
                 </div>
             </div>
         </div>
 
 
         {{-- ===================== SECTION 2: OCCUPATIONAL HEALTH & SAFETY ===================== --}}
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
             {{-- English Card --}}
             <div class="border border-gray-200 shadow-sm">
                 <div class="px-6 pt-5 pb-3">
                     <p class="text-[#0057a8] text-2xl font-bold tracking-widest">SEARLE</p>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: IMS/IV/0025</span>
-                    <span class="px-4 py-2 flex-1">Revision No: 02</span>
-                    <span class="px-4 py-2 flex-1">Issue Date: 01-11-2019</span>
+                <div
+                    class="flex flex-wrap text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200">
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: IMS/IV/0025</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Revision No: 02</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Issue Date: 01-11-2019</span>
                 </div>
-                <div class="bg-[#1a6fb5] text-white px-6 py-10 mt-4">
-                    <h2 class="text-2xl font-bold uppercase tracking-wide leading-snug">Occupational Health
+                <div class="bg-[#1a6fb5] text-white px-6 py-8 md:py-10 mt-4">
+                    <h2 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-snug">Occupational Health
                         &<br>Safety Policy</h2>
                 </div>
                 <div class="px-6 py-5 text-sm text-gray-600 leading-7 text-justify">
@@ -321,10 +306,10 @@
                         <p class="text-[#1a6fb5] text-xs tracking-widest">PHARMA</p>
                     </div>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: MSM-F005-01</span>
-                    <span class="px-4 py-2 flex-1">Version No: 01</span>
-                    <span class="px-4 py-2 flex-1">Effective Date: 01-01-2020</span>
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200">
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: MSM-F005-01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Version No: 01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Effective Date: 01-01-2020</span>
                 </div>
             </div>
 
@@ -334,14 +319,14 @@
                 <div class="px-6 pt-5 pb-3">
                     <p class="text-[#0057a8] text-2xl font-bold tracking-widest" style="direction:ltr;">SEARLE</p>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200"
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-b border-gray-200 divide-x divide-gray-200"
                     style="direction:ltr;">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: IMS/IV/0025</span>
-                    <span class="px-4 py-2 flex-1">Revision No: 02</span>
-                    <span class="px-4 py-2 flex-1">Issue Date: 01-11-2019</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: IMS/IV/0025</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Revision No: 02</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Issue Date: 01-11-2019</span>
                 </div>
-                <div class="bg-[#1a6fb5] text-white px-6 py-10 mt-4 text-right">
-                    <h2 class="text-2xl font-bold leading-loose">پیشہ ورانہ صحت اور<br>حفاظتی پالیسی</h2>
+                <div class="bg-[#1a6fb5] text-white px-6 py-8 md:py-10 mt-4 text-right">
+                    <h2 class="text-xl md:text-2xl font-bold leading-loose">پیشہ ورانہ صحت اور<br>حفاظتی پالیسی</h2>
                 </div>
                 <div class="px-6 py-5 text-sm text-gray-600 leading-8 text-right">
                     پیشہ ورانہ صحت اور حفاظت ہمارے کاروبار کی کامیابی کی بنیاد ہے۔
@@ -359,8 +344,8 @@
                         </li>
                         <li class="flex items-start gap-2 leading-8 flex-row-reverse">
                             <span class="text-[#1a6fb5] mt-1">&#9658;</span>
-                            ہم میں سے ہر ایک کو پیشہ ورانہ صحت اور حفاظت کے اعلیٰ معیار کے ساتھ تمام سرگرمیاں انجام
-                            دینی چاہئیں۔
+                            ہم میں سے ہر ایک کو پیشہ ورانہ صحت اور حفاظت کے اعلیٰ معیار کے ساتھ تمام سرگرمیاں انجام دینی
+                            چاہئیں۔
                         </li>
                     </ul>
                 </div>
@@ -375,22 +360,21 @@
                         <p class="text-[#1a6fb5] text-xs tracking-widest">PHARMA</p>
                     </div>
                 </div>
-                <div class="flex text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200"
+                <div class="flex flex-wrap text-xs text-gray-500 border-t border-gray-200 divide-x divide-gray-200"
                     style="direction:ltr;">
-                    <span class="px-4 py-2 flex-1">Doc. Ref: MSM-F005-01</span>
-                    <span class="px-4 py-2 flex-1">Version No: 01</span>
-                    <span class="px-4 py-2 flex-1">Effective Date: 01-01-2020</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Doc. Ref: MSM-F005-01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Version No: 01</span>
+                    <span class="px-3 py-2 flex-1 min-w-0">Effective Date: 01-01-2020</span>
                 </div>
             </div>
         </div>
 
 
         {{-- ===================== SECTION 3: ISOQAR CERTIFICATES ===================== --}}
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
             {{-- Certificate 1: ISO 14001 --}}
-            <div class="border border-gray-200 shadow-sm p-8">
-                {{-- Logo --}}
+            <div class="border border-gray-200 shadow-sm p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-6">
                     <div class="text-[#1a6fb5]">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -404,10 +388,10 @@
                     </div>
                 </div>
 
-                <h3 class="text-3xl text-gray-300 font-light mb-6">Certificate of Registration</h3>
+                <h3 class="text-2xl md:text-3xl text-gray-300 font-light mb-6">Certificate of Registration</h3>
 
                 <div class="flex gap-4 items-start">
-                    <div class="text-gray-300 mt-1">
+                    <div class="text-gray-300 mt-1 shrink-0">
                         <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
                             <path d="M16 2L3 9v13c0 9 5.8 17.4 13 19.8C23.2 39.4 29 31 29 22V9L16 2z" fill="#f0f0f0"
                                 stroke="#d0d0d0" stroke-width="1" />
@@ -422,21 +406,23 @@
                     </div>
                 </div>
 
-                <div class="mt-6 border border-gray-200 p-4 flex gap-6 items-center">
+                <div
+                    class="mt-6 border border-gray-200 p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
                     <div
-                        class="w-16 h-16 rounded-full border-2 border-[#1a6fb5] flex items-center justify-center text-[#1a6fb5] text-xs font-bold text-center leading-tight">
+                        class="w-16 h-16 shrink-0 rounded-full border-2 border-[#1a6fb5] flex items-center justify-center
+                            text-[#1a6fb5] text-xs font-bold text-center leading-tight">
                         UKAS<br>MGT
                     </div>
                     <div class="text-sm space-y-1">
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Certificate Number:</span>
                             <span class="text-[#1a6fb5] font-medium">25181-EMS-001</span>
                         </div>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Initial Registration Date:</span>
                             <span class="text-gray-700">13 December 2024</span>
                         </div>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Current Expiry Date:</span>
                             <span class="text-gray-700">13 December 2027</span>
                         </div>
@@ -445,7 +431,7 @@
             </div>
 
             {{-- Certificate 2: ISO 45001 --}}
-            <div class="border border-gray-200 shadow-sm p-8">
+            <div class="border border-gray-200 shadow-sm p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-6">
                     <div class="text-[#1a6fb5]">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -459,10 +445,10 @@
                     </div>
                 </div>
 
-                <h3 class="text-3xl text-gray-300 font-light mb-6">Certificate of Registration</h3>
+                <h3 class="text-2xl md:text-3xl text-gray-300 font-light mb-6">Certificate of Registration</h3>
 
                 <div class="flex gap-4 items-start">
-                    <div class="text-gray-300 mt-1">
+                    <div class="text-gray-300 mt-1 shrink-0">
                         <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
                             <path d="M16 2L3 9v13c0 9 5.8 17.4 13 19.8C23.2 39.4 29 31 29 22V9L16 2z" fill="#f0f0f0"
                                 stroke="#d0d0d0" stroke-width="1" />
@@ -477,21 +463,23 @@
                     </div>
                 </div>
 
-                <div class="mt-6 border border-gray-200 p-4 flex gap-6 items-center">
+                <div
+                    class="mt-6 border border-gray-200 p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
                     <div
-                        class="w-16 h-16 rounded-full border-2 border-[#1a6fb5] flex items-center justify-center text-[#1a6fb5] text-xs font-bold text-center leading-tight">
+                        class="w-16 h-16 shrink-0 rounded-full border-2 border-[#1a6fb5] flex items-center justify-center
+                            text-[#1a6fb5] text-xs font-bold text-center leading-tight">
                         UKAS<br>MGT
                     </div>
                     <div class="text-sm space-y-1">
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Certificate Number:</span>
                             <span class="text-[#1a6fb5] font-medium">25181-OHS-001</span>
                         </div>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Initial Registration Date:</span>
                             <span class="text-gray-700">13 December 2024</span>
                         </div>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-1 sm:gap-2">
                             <span class="text-gray-500">Current Expiry Date:</span>
                             <span class="text-gray-700">13 December 2027</span>
                         </div>
