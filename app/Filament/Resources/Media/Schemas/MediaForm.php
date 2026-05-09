@@ -5,7 +5,7 @@ namespace App\Filament\Resources\Media\Schemas;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class MediaForm
@@ -14,13 +14,22 @@ class MediaForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
-                    ->required(),
-                RichEditor::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                FileUpload::make('pdf')
-                    ->nullable(),
+                Section::make('Media')
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('title')
+                            ->required(),
+                        FileUpload::make('pdf')
+                            ->acceptedFileTypes(['application/pdf'])
+                            ->disk('public')
+                            ->nullable(),
+                        RichEditor::make('description')
+                            ->required()
+                            ->columnSpanFull(),
+
+                    ])
+
             ]);
     }
 }

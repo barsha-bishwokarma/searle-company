@@ -43,6 +43,7 @@ class InvestorForm
                         FileUpload::make('file')
                             ->label('PDF File')
                             ->acceptedFileTypes(['application/pdf'])
+                            ->disk('public')
                             ->required(),
                     ]),
             ]);
