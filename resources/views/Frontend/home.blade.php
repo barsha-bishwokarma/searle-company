@@ -50,7 +50,7 @@
                             for all.
                         </p>
                         <div class="mt-8">
-                            <a class="text-gray-400" href="">Readmore..</a>
+                            <a class="text-gray-400" href="{{route('about.ceo')}}">Readmore..</a>
                         </div>
 
                         <div class="mt-8">
@@ -132,53 +132,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-        const track = document.getElementById('sliderTrack');
-        const dotsContainer = document.getElementById('dotsContainer');
-        const cards = Array.from(track.querySelectorAll('.flex-shrink-0'));
-        const total = cards.length;
-        const perView = 2;
-        let current = 0;
-
-        function getMaxIndex() {
-            return Math.max(0, total - perView);
-        }
-
-        function buildDots() {
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i <= getMaxIndex(); i++) {
-                const dot = document.createElement('div');
-                dot.className =
-                    `w-2 h-2 rounded-full cursor-pointer transition-all duration-200 ${i === 0 ? 'bg-[#1a3a6b] scale-125' : 'bg-gray-300'}`;
-                dot.addEventListener('click', () => goTo(i));
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function updateDots() {
-            dotsContainer.querySelectorAll('div').forEach((d, i) => {
-                if (i === current) {
-                    d.className =
-                        'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-[#1a3a6b] scale-125';
-                } else {
-                    d.className = 'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-gray-300';
-                }
-            });
-        }
-
-        function goTo(index) {
-            current = Math.max(0, Math.min(index, getMaxIndex()));
-            const cardWidth = cards[0].offsetWidth + 24;
-            track.style.transform = `translateX(-${current * cardWidth}px)`;
-            updateDots();
-        }
-
-        document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-        document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
-
-        buildDots();
-    </script>
 
     <section class="py-15">
         <div class="max-w-6xl mx-auto py-20">
@@ -337,7 +290,7 @@
 
                                 {{-- Read More --}}
                                 <div class="mt-4 ">
-                                    <a href="{{ route('news.show', $item->id) }}"
+                                    <a href="{{ route('news.show', $item->slug) }}"
                                         class="inline-block px-6 py-2 bg-[var(--secondary-color)] hover:text-[var(--secondary-color)] hover:bg-white border border-[var(--secondary-color)] text-white text-sm rounded font-semibold hover:bg-opacity-90 transition-all duration-300">
                                         Read more
                                     </a>
@@ -360,3 +313,49 @@
         </div>
     </section>
 </x-frontend.layout>
+<script>
+    const track = document.getElementById('sliderTrack');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const cards = Array.from(track.querySelectorAll('.flex-shrink-0'));
+    const total = cards.length;
+    const perView = 2;
+    let current = 0;
+
+    function getMaxIndex() {
+        return Math.max(0, total - perView);
+    }
+
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= getMaxIndex(); i++) {
+            const dot = document.createElement('div');
+            dot.className =
+                `w-2 h-2 rounded-full cursor-pointer transition-all duration-200 ${i === 0 ? 'bg-[#1a3a6b] scale-125' : 'bg-gray-300'}`;
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        dotsContainer.querySelectorAll('div').forEach((d, i) => {
+            if (i === current) {
+                d.className =
+                    'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-[#1a3a6b] scale-125';
+            } else {
+                d.className = 'w-2 h-2 rounded-full cursor-pointer transition-all duration-200 bg-gray-300';
+            }
+        });
+    }
+
+    function goTo(index) {
+        current = Math.max(0, Math.min(index, getMaxIndex()));
+        const cardWidth = cards[0].offsetWidth + 24;
+        track.style.transform = `translateX(-${current * cardWidth}px)`;
+        updateDots();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+    buildDots();
+</script>

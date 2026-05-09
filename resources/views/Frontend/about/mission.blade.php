@@ -1,40 +1,48 @@
 <x-frontend.layout>
-    <div class="max-w-6xl mx-auto py-10">
 
-        
-        <ul class="flex items-center gap-2 text-sm mb-8">
-            <li><a class="text-gray-400" href="{{ route('home') }}">Home</a></li>
-            <li class="text-gray-400">/</li>
-            <li class="text-[var(--secondary-color)]">Mission, Vision & Values</li>
-        </ul>
+    <div class="bg-gray-50 border-b border-gray-100 mt-1">
+        <div class="max-w-6xl mx-auto py-4 px-4 sm:px-6">
+            <ul class="flex flex-wrap items-center gap-2 text-sm">
+                <li><a class="text-gray-400 hover:underline decoration-gray-400" href="{{ route('home') }}">Home</a></li>
+                <li class="text-gray-400">/</li>
+                <li class="text-[var(--secondary-color)]">Mission, Vision & Values</li>
+            </ul>
+        </div>
+    </div>
 
-    
-        <div class="flex gap-10">
+    <div class="max-w-6xl mx-auto py-10 px-4 sm:px-6">
+
+        {{-- TOP SECTION --}}
+        <div class="flex flex-col lg:flex-row gap-10">
 
             {{-- Left image --}}
-            <div class="w-1/2 flex-shrink-0">
-                <img src="{{ asset('images/vision.jpg') }}" alt="Vision" class="w-full h-full object-cover">
+            <div class="w-full lg:w-1/2 flex-shrink-0">
+                <img src="{{ asset('images/vision.jpg') }}" alt="Vision" class="w-full h-auto object-cover">
             </div>
 
-
-            <div class="w-1/2">
+            {{-- Right content --}}
+            <div class="w-full lg:w-1/2">
 
                 <div class="mb-10">
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-4 flex-wrap">
                         <h2 class="text-xl font-bold text-gray-700 border border-gray-400 px-4 py-2 whitespace-nowrap">
-                            OUR VISION</h2>
-                        <div class="flex-1 h-px bg-gray-400"></div>
+                            OUR VISION
+                        </h2>
+                        <div class="flex-1 h-px bg-gray-400 hidden sm:block"></div>
                     </div>
-                    <p class="text-gray-600 leading-8">To lead in improving the quality of human life</p>
+                    <p class="text-gray-600 leading-8">
+                        To lead in improving the quality of human life
+                    </p>
                 </div>
 
-                
                 <div class="mb-10">
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-4 flex-wrap">
                         <h2 class="text-xl font-bold text-gray-700 border border-gray-400 px-4 py-2 whitespace-nowrap">
-                            OUR MISSION</h2>
-                        <div class="flex-1 h-px bg-gray-400"></div>
+                            OUR MISSION
+                        </h2>
+                        <div class="flex-1 h-px bg-gray-400 hidden sm:block"></div>
                     </div>
+
                     <ul class="text-gray-600 leading-8 space-y-3 text-justify">
                         <li>Provide its customers with the best possible products and services in healthcare and
                             consumer industry.</li>
@@ -50,24 +58,29 @@
             </div>
         </div>
 
-        
+        {{-- VALUES --}}
         <div class="mt-10">
-            <div class="flex items-center gap-3 mb-6">
-                <h2 class="text-xl font-bold text-gray-700 border border-gray-400 px-4 py-2 whitespace-nowrap">OUR
-                    VALUES</h2>
-                <div class="flex-1 h-px bg-gray-400"></div>
+
+            <div class="flex items-center gap-3 mb-6 flex-wrap">
+                <h2 class="text-xl font-bold text-gray-700 border border-gray-400 px-4 py-2 whitespace-nowrap">
+                    OUR VALUES
+                </h2>
+                <div class="flex-1 h-px bg-gray-400 hidden sm:block"></div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-4.png" alt="Value"
-                    class="w-full">
-                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-1-2.png" alt="Value"
-                    class="w-full">
-                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-2-2.png" alt="Value"
-                    class="w-full">
-                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-3-2.png" alt="Value"
-                    class="w-full">
+
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-4.png" class="w-full"
+                    alt="Value">
+                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-1-2.png" class="w-full"
+                    alt="Value">
+                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-2-2.png" class="w-full"
+                    alt="Value">
+                <img src="https://searlecompany.com/wp-content/uploads/2022/05/searle-tag-3-2.png" class="w-full"
+                    alt="Value">
             </div>
+
         </div>
 
     </div>
+
 </x-frontend.layout>

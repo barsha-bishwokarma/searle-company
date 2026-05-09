@@ -1,5 +1,15 @@
 <x-frontend.layout>
-    <div class="max-w-5xl mx-auto py-16">
+    <div class="bg-gray-100 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto py-4 px-4 sm:px-6">
+            <ul class="flex flex-wrap items-center gap-2 text-sm">
+                <li><a class="text-gray-400" href="{{ route('home') }}">Home</a></li>
+                <li class="text-gray-400">/</li>
+                <li class="text-[var(--secondary-color)]">History</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto py-12 sm:py-20 px-4 sm:px-6">
 
         @php
             $history = [
@@ -73,49 +83,62 @@
         @endphp
 
         <div class="relative">
+
             @foreach ($history as $index => $item)
-                <div class="flex items-center justify-center mb-[-55px] relative"
+                <div class="flex flex-col md:flex-row items-center justify-center mb-10 md:mb-[-35px] relative"
                     style="z-index: {{ count($history) - $index }}">
 
                     @if ($item['side'] === 'left')
-                        {{-- Left text --}}
-                        <div class="w-80 text-right pr-6">
-                            <p class="text-gray-500 text-sm leading-7">{{ $item['text'] }}</p>
+                        <!-- LEFT TEXT -->
+                        <div class="w-full md:w-80 text-left md:text-right md:pr-6 mb-3 md:mb-0">
+                            <p class="text-gray-500 text-sm leading-7">
+                                {{ $item['text'] }}
+                            </p>
                         </div>
-                        {{-- Line + dot --}}
+
+                        <!-- LINE + DOT -->
                         <div class="flex items-center flex-shrink-0">
-                            <div class="w-16 h-px {{ str_replace('bg-', 'bg-', $item['color']) }} opacity-50"></div>
+                            <div class="w-10 md:w-16 h-px {{ $item['color'] }} opacity-50"></div>
                             <div class="w-3 h-3 rounded-full border-2 {{ $item['dot'] }} bg-white flex-shrink-0"></div>
                         </div>
-                        {{-- Diamond --}}
+
+                        <!-- YEAR DIAMOND -->
                         <div
-                            class="w-44 h-44 {{ $item['color'] }} rotate-45 flex items-center justify-center flex-shrink-0 ml-2 rounded-lg">
-                            <span class="-rotate-45 text-white text-2xl font-bold">{{ $item['year'] }}</span>
+                            class="w-20 h-20 md:w-28 md:h-28 {{ $item['color'] }} rotate-45 flex items-center justify-center flex-shrink-0 md:ml-2 rounded-lg my-3 md:my-0">
+                            <span class="-rotate-45 text-white text-sm md:text-lg font-bold">
+                                {{ $item['year'] }}
+                            </span>
                         </div>
-                        {{-- Right empty --}}
-                        <div class="w-80"></div>
+
+                        <div class="hidden md:block w-80"></div>
                     @else
-                        {{-- Left empty --}}
-                        <div class="w-80"></div>
-                        {{-- Diamond --}}
+                        <div class="hidden md:block w-80"></div>
+
+                        <!-- YEAR DIAMOND -->
                         <div
-                            class="w-44 h-44 {{ $item['color'] }} rotate-45 flex items-center justify-center flex-shrink-0 mr-2 rounded-lg">
-                            <span class="-rotate-45 text-white text-2xl font-bold">{{ $item['year'] }}</span>
+                            class="w-20 h-20 md:w-28 md:h-28 {{ $item['color'] }} rotate-45 flex items-center justify-center flex-shrink-0 md:mr-2 rounded-lg my-3 md:my-0">
+                            <span class="-rotate-45 text-white text-sm md:text-lg font-bold">
+                                {{ $item['year'] }}
+                            </span>
                         </div>
-                        {{-- Dot + line --}}
+
+                        <!-- LINE + DOT -->
                         <div class="flex items-center flex-shrink-0">
                             <div class="w-3 h-3 rounded-full border-2 {{ $item['dot'] }} bg-white flex-shrink-0"></div>
-                            <div class="w-16 h-px {{ $item['color'] }} opacity-50"></div>
+                            <div class="w-10 md:w-16 h-px {{ $item['color'] }} opacity-50"></div>
                         </div>
-                        {{-- Right text --}}
-                        <div class="w-80 pl-6">
-                            <p class="text-gray-500 text-sm leading-7">{{ $item['text'] }}</p>
+
+                        <!-- RIGHT TEXT -->
+                        <div class="w-full md:w-80 pl-0 md:pl-6 text-left mt-3 md:mt-0">
+                            <p class="text-gray-500 text-sm leading-7">
+                                {{ $item['text'] }}
+                            </p>
                         </div>
                     @endif
 
                 </div>
             @endforeach
-        </div>
 
+        </div>
     </div>
 </x-frontend.layout>

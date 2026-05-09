@@ -2,7 +2,8 @@
 
     <div class="max-w-6xl mx-auto px-6 py-4">
         <ul class="flex items-center gap-2 text-sm">
-            <li><a class="text-gray-400" href="{{ route('home') }}">Home</a></li>
+            <li><a class="text-gray-400 text-gray-400 hover:underline decoration-gray-400"
+                    href="{{ route('home') }}">Home</a></li>
             <li class="text-gray-400">/</li>
             <li class="text-[var(--secondary-color)]">Facilities</li>
         </ul>
@@ -27,7 +28,7 @@
             @foreach ($facilities as $index => $facility)
                 <div class="border-b border-gray-200">
 
-                    
+
                     <button @click="openIndex = openIndex === {{ $index }} ? null : {{ $index }}"
                         class="w-full flex items-center gap-4 py-5 text-left text-gray-400 uppercase text-sm font-bold tracking-widest hover:text-[var(--secondary-color)] transition-colors duration-300">
                         <span x-text="openIndex === {{ $index }} ? '−' : '+'"
@@ -35,7 +36,7 @@
                         {{ $facility->plant_name }}
                     </button>
 
-                    
+
                     <div x-show="openIndex === {{ $index }}"
                         x-transition:enter="transition-all ease-out duration-500"
                         x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-screen"
