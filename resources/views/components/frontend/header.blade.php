@@ -5,7 +5,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/searle-logo-1.png') }}" alt="searle_logo" class="h-8 w-auto object-contain">
+                <img src="{{ Storage::url($settings['logo'] ?? '') }}" alt="searle_logo" class="h-8 w-auto object-contain">
             </a>
 
             {{-- Desktop Contact Info --}}
@@ -15,7 +15,9 @@
                         <i class="fa-solid fa-envelope"></i>
                     </div>
                     <div class="tracking-tight leading-3">
-                        <p class="text-black text-[12px] font-bold">info@searlecompany.com</p>
+                        <a class="text-black text-[12px] font-bold"
+                            href="mail to:{{ $settings['email'] ?? '' }}">{{ $settings['email'] ?? '' }}</a>
+                        </p>
                         <p class="text-gray-500 text-[10px]">Email</p>
                     </div>
                 </div>
@@ -25,7 +27,8 @@
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="tracking-tight leading-3">
-                        <p class="text-black text-[12px] font-bold">+92 21 371 70 200-201</p>
+                        <a class="text-black text-[12px] font-bold"
+                            href="tel:{{ $settings['phone'] ?? '' }}">{{ $settings['phone'] ?? '' }}</a>
                         <p class="text-gray-500 text-[10px]">Phone</p>
                     </div>
                 </div>
@@ -35,7 +38,7 @@
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <div class="tracking-tight leading-3">
-                        <p class="text-black text-[12px] font-bold">One IBL Centre - Karachi</p>
+                        <p class="text-black text-[12px] font-bold">{{$settings['address'] ?? ''}}</p>
                         <p class="text-gray-500 text-[10px]">Address</p>
                     </div>
                 </div>
